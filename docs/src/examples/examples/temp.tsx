@@ -31,7 +31,7 @@ const timeseries = Array.from({ length: 100 }, (_, i) => ({
 export default () => {
   return (
     <div class="bg-sc-100 rounded-lg mt-5 not-prose">
-      <div class="p-10 gap-20 grid text-sm max-w-130 mx-auto">
+      <div class="p-10 gap-20 grid text-sm max-w-170 mx-auto">
         <Chart data={data} width={500} height={250}>
           <Area dataKey="area" class="text-purple-200 dark:text-purple-800" />
           <Area
