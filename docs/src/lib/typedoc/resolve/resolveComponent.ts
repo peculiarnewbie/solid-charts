@@ -169,7 +169,6 @@ const resolveDefaultDynamicAs = (component: DeclarationVariant) => {
 
   if (component.signatures![0].typeParameters) {
     if (
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       !component.signatures![0].typeParameters[0] ||
       !component.signatures![0].typeParameters[0].default
     ) {

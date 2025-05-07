@@ -8,7 +8,7 @@ export type MarkProps = OverrideProps<
   {
     /**
      * Length of the mark lines in px.
-     * @defaultValue 6
+     * @defaultValue 6px
      * */
     length?: number
   }

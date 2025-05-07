@@ -23,7 +23,6 @@ const SearchItem = (props: {
         <span class="block font-bold">{props.item.hierarchy}</span>
         <span
           class="block truncate [&>mark]:rounded-sm [&>mark]:bg-sc-400 [&>mark]:px-0.5"
-          // eslint-disable-next-line solid/no-innerhtml
           innerHTML={props.item.content}
         />
       </a>
