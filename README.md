@@ -5,6 +5,7 @@
 </div>
 <br />
 <div align="center">
+
 [![NPM Version](https://img.shields.io/npm/v/solid-charts?color=1ABD94)](https://www.npmjs.com/package/solid-charts)
 [![NPM Downloads](https://img.shields.io/npm/dm/solid-charts?color=1ABD94)](https://www.npmjs.com/package/solid-charts)
 [![License](https://img.shields.io/github/license/corvudev/solid-charts?color=1ABD94)](https://github.com/corvudev/solid-charts/blob/main/LICENSE)
