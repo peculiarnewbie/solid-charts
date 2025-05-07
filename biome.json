@@ -29,7 +29,7 @@
   },
   "formatter": {
     "enabled": true,
-    "ignore": ["**/*.astro", "**/*.md"],
+    "ignore": ["**/*.astro", "**/*.md", "**/package.json"],
     "indentStyle": "space",
     "indentWidth": 2
   },
