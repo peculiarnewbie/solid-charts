@@ -6,8 +6,7 @@
   "include-v-in-tag": false,
   "packages": {
     "packages/solid-charts": {
-      "component": "solid-charts",
-      "release-as": "0.0.1"
+      "component": "solid-charts"
     }
   }
 }
