@@ -1,0 +1,25 @@
+---
+layout: '@layouts/Docs.astro'
+title: Axis
+description: Composable chart library for SolidJS
+image: https://solidcharts.dev/banner.jpg
+apiPageName: Axis
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import ExampleWrapper from '@examples/ExampleWrapper'
+import RawCode from '@components/docs/code/RawCode.astro'
+import ApiReference from '@components/docs/api/ApiReference.astro'
+import ApiPages from '@lib/typedoc/apiPages'
+
+# Axis
+
+Some components are related to a specific axis of the chart. These include labels, ticks, grid lines and interactive elements like the tooltip and cursor. All these components need to be wrapped inside an `Axis` component. The `Axis` component is a wrapper that provides the necessary context for these components to function correctly.
+
+## API Reference
+
+<ApiReference parts={ApiPages[frontmatter.apiPageName]} />
+

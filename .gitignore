@@ -1,0 +1,8 @@
+.astro
+.env
+.turbo
+dist
+node_modules
+packages/*/README.md
+tsup.config.*.mjs
+api.json

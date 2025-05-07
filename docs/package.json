@@ -1,0 +1,41 @@
+{
+  "name": "@solid-charts/docs",
+  "private": true,
+  "description": "solidcharts.dev website",
+  "homepage": "https://solidcharts.dev",
+  "license": "MIT",
+  "author": {
+    "name": "Jasmin Noetzli",
+    "email": "code@jasi.dev",
+    "url": "https://github.com/GiyoMoon"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "clean": "rm -rf .turbo dist node_modules",
+    "dev": "astro dev",
+    "lint": "biome check && prettier . --check",
+    "lint:fix": "biome check --fix && prettier . --write",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/solid-js": "^5.0.10",
+    "@corvu/dialog": "^0.2.4",
+    "@corvu/drawer": "^0.2.4",
+    "@fontsource-variable/rubik": "^5.2.5",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/vite": "^4.1.5",
+    "astro": "^5.7.11",
+    "clsx": "^2.1.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "shiki": "^3.4.0",
+    "solid-charts": "workspace:*",
+    "solid-js": "^1.9.6",
+    "solid-list": "^0.3.0",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.8.3"
+  }
+}

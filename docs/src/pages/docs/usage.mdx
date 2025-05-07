@@ -1,0 +1,43 @@
+---
+layout: '@layouts/Docs.astro'
+title: Usage
+description: Learn how to use solid-charts
+image: https://solidcharts.dev/banner.jpg
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import ExampleWrapper from '@examples/ExampleWrapper'
+import RawCode from '@components/docs/code/RawCode.astro'
+import FirstExample from '@examples/docs/usage/first'
+import FirstExampleTsx from '@examples/docs/usage/first?raw'
+
+# Usage
+
+## Installation
+
+Install the library with the package manager of your choice.
+
+<Code code={`
+  npm install solid-charts
+`} lang="bash" />
+
+## Creating your first chart
+
+Let's create a chart! We're using a simple dataset to draw a line chart that includes both an x-axis and y-axis. You'll also find a tooltip and a cursor line that appears when you hover over a specific day, making it easier to visualize and interact with your data.
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <FirstExample client:only />
+  <RawCode slot="tailwindTsx" code={FirstExampleTsx} lang="tsx" />
+</ExampleWrapper>
+

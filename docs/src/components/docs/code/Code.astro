@@ -1,0 +1,25 @@
+---
+import CopyToClipboard from '@components/docs/code/CopyToClipboard'
+import RawCode from '@components/docs/code/RawCode.astro'
+
+interface Props {
+  code: string
+  lang: 'html' | 'tsx' | 'js' | 'css' | 'bash'
+}
+
+const { code, lang } = Astro.props
+
+const trimmedCode = code
+  .trim()
+  .replace(
+    /\/\/ truncate-start[\s\S]*?\/\/ truncate-end/,
+    '// ... code truncated',
+  )
+---
+
+<div
+  class="not-prose relative mb-6 mt-4 grid rounded-md border-2 border-sc-200 overflow-hidden"
+>
+  <RawCode code={trimmedCode} lang={lang} copyButton={false} />
+  <CopyToClipboard code={trimmedCode} client:visible />
+</div>

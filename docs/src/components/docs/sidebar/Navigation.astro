@@ -1,0 +1,57 @@
+---
+import NavLink from '@components/docs/sidebar/NavLink.astro'
+---
+
+<nav>
+  <div class="mb-3 w-full text-sm grid grid-cols-2 gap-4">
+    <a
+      href="/docs/"
+      class:list={[
+        'block py-1 text-center transition-colors border-b-2 duration-75',
+        {
+          'border-sc-300': Astro.url.pathname.startsWith('/docs/'),
+          'border-transparent': !Astro.url.pathname.startsWith('/docs/'),
+        },
+      ]}>Docs</a
+    >
+    <a
+      href="/examples/"
+      class:list={[
+        'block py-1 text-center transition-colors border-b-2 duration-75',
+        {
+          'border-sc-300': Astro.url.pathname.startsWith('/examples/'),
+          'border-transparent': !Astro.url.pathname.startsWith('/examples/'),
+        },
+      ]}>Examples</a
+    >
+  </div>
+  {
+    Astro.url.pathname.startsWith('/docs/') && (
+      <>
+        <p class="mb-1 ml-4 text-sm font-medium opacity-60">Overview</p>
+        <div>
+          <NavLink name="Introduction" href="/docs/" />
+          <NavLink name="Usage" href="/docs/usage/" />
+          <NavLink name="Axis" href="/docs/axis/" />
+          <NavLink name="Stacks" href="/docs/stacks/" />
+          <NavLink name="Curves" href="/docs/curves/" />
+        </div>
+        <p class="mb-1 ml-4 mt-6 text-sm font-medium opacity-60">Components</p>
+        <div>
+          <NavLink name="Chart" href="/docs/components/chart/" />
+          <NavLink name="Series" href="/docs/components/series/" />
+          <NavLink name="Axis" href="/docs/components/axis/" />
+        </div>
+      </>
+    )
+  }
+  {
+    Astro.url.pathname.startsWith('/examples/') && (
+      <>
+        <div>
+          <NavLink name="Overview" href="/examples/" />
+        </div>
+      </>
+    )
+  }
+</nav>

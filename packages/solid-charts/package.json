@@ -1,0 +1,69 @@
+{
+  "name": "solid-charts",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Composable charts for SolidJS",
+  "keywords": ["solid", "solidjs", "d3", "charts"],
+  "bugs": {
+    "url": "https://github.com/corvudev/solid-charts/issues",
+    "email": "code@jasi.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corvudev/solid-charts.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jasmin Noetzli",
+    "email": "code@jasi.dev",
+    "url": "https://github.com/GiyoMoon"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "solid": "./dist/index.jsx",
+      "default": "./dist/index.js"
+    },
+    "./curves": {
+      "types": "./dist/curves.d.ts",
+      "solid": "./dist/curves.jsx",
+      "default": "./dist/curves.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": ["./dist/index.d.ts"]
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "cp ../../README.md . && tsc --noEmit && tsup",
+    "clean": "rm -rf .turbo dist node_modules",
+    "dev": "tsup --watch",
+    "lint": "biome check",
+    "lint:fix": "biome check --fix",
+    "typedoc": "typedoc --json api.json --entryPoints ./src/index.ts"
+  },
+  "dependencies": {
+    "@corvu/utils": "^0.4.2",
+    "@solid-primitives/memo": "^1.4.2",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.7",
+    "esbuild-plugin-solid": "^0.6.0",
+    "solid-js": "^1.9.6",
+    "tsup": "^8.4.0",
+    "typedoc": "^0.28.4",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8"
+  }
+}

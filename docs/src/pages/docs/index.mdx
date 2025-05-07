@@ -1,0 +1,52 @@
+---
+layout: '@layouts/Docs.astro'
+title: Introduction to solid-charts
+description: An overview of solid-charts and its features.
+image: https://solidcharts.dev/banner.jpg
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+
+# Introduction
+
+solid-charts is a component-driven chart library for <Link href="https://solidjs.com/" newTab>SolidJS</Link>. It's based on SVG elements and uses <Link href="https://d3js.org/" newTab>D3</Link> for data visualization.
+
+## Features
+
+### Composable
+
+The library offers components like `<Line>`, `<Axis>`, and `<Tooltip>`, enabling you to compose charts the way you want. Unused components are tree-shaken away to ensure the smallest bundle possible.
+
+### Unstyled
+
+solid-charts renders default, unstyled SVG elements, giving you complete control over the appearance of your charts. This makes it easy to integrate the charts into your design system. Whether you're using Tailwind CSS, a CSS-in-JS solution, or plain CSS, styling is entirely up to you. 
+
+## Development status
+
+solid-charts is currently in a very early stage of development. The goal is to introduce the library to developers and ask for initial feedback. There are a lot of planned features yet to be implemented and the API is bound to iterate and change.
+
+### Roadmap
+
+A very rough overview of planned features that aren't implemented yet. The list isn't final and changes depending on user feedback and targeted scope of the library.
+
+**- More chart types**
+
+Currently the library supports the most common chart types (Line, Area, Bar, Point). The goal is to support a few more like Pie, Radar and RadialBar.
+
+**- Better customizablility of the y axis**
+
+The goal is to treat the y axis the same way as the x axis behaves. It's currently not possible to have a vertical chart and have the x axis correspond to the value of the series. This should allow for two dimensional series too where both axis align to a value.
+
+**- Some kind of support for animations**
+
+Animating the charts hasn't been explored yet. Native svg animations should work already, but maybe there is need for more support.
+
+**- SSR**
+
+Due to the composable nature and working with contexts to register parts of the chart, it's not possible to render the chart on the server. Goal is to explore the options here and see what could be possible.
+
+## Community
+
+If you have feedback, questions, feature requests or just want to write a kind message, feel free to join the <Link href="https://discord.com/invite/solidjs" newTab>SolidJS Discord server</Link>. We are always happy to help and love to hear from you. Alternatively, you can leave your feedback in the <Link href="https://github.com/corvudev/solid-charts/discussions/" newTab>discussions tab</Link> on the GitHub repository.

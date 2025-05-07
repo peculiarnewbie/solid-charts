@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant macos (&:where(.macos, .macos *));
+
+@theme {
+  --font-sans: "Rubik Variable", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Mona Space", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-sc-text: var(--sc-text);
+  --color-sc-text-dark: var(--sc-text-dark);
+  --color-sc-bg: var(--sc-bg);
+  --color-sc-100: var(--sc-100);
+  --color-sc-200: var(--sc-200);
+  --color-sc-300: var(--sc-300);
+  --color-sc-400: var(--sc-400);
+  --color-sc-link: var(--sc-link);
+  --color-sc-yellow: var(--sc-yellow);
+  --color-sc-purple: var(--sc-purple);
+
+  --animate-in: enter 150ms ease;
+  --animate-out: exit 150ms ease;
+
+  @keyframes enter {
+    from {
+      opacity: var(--tw-enter-opacity, 1);
+      transform: translate3d(
+          var(--tw-enter-translate-x, 0),
+          var(--tw-enter-translate-y, 0),
+          0
+        )
+        scale3d(
+          var(--tw-enter-scale, 1),
+          var(--tw-enter-scale, 1),
+          var(--tw-enter-scale, 1)
+        );
+    }
+  }
+
+  @keyframes exit {
+    to {
+      opacity: var(--tw-exit-opacity, 1);
+      transform: translate3d(
+          var(--tw-exit-translate-x, 0),
+          var(--tw-exit-translate-y, 0),
+          0
+        )
+        scale3d(
+          var(--tw-exit-scale, 1),
+          var(--tw-exit-scale, 1),
+          var(--tw-exit-scale, 1)
+        );
+    }
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility fade-in-* {
+  --tw-enter-opacity: --value(percentage, ratio);
+}
+@utility fade-out-* {
+  --tw-exit-opacity: --value(percentage, ratio);
+}
+
+@utility zoom-in-* {
+  --tw-enter-scale: --value(percentage, ratio);
+}
+@utility zoom-out-* {
+  --tw-exit-scale: --value(percentage, ratio);
+}
+
+@utility slide-in-from-top-* {
+  --tw-enter-translate-y: calc(--value(percentage) * -1);
+  --tw-enter-translate-y: calc(--value(ratio) * -100%);
+  --tw-enter-translate-y: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-in-from-bottom-* {
+  --tw-enter-translate-y: --value(percentage);
+  --tw-enter-translate-y: calc(--value(ratio) * 100%);
+  --tw-enter-translate-y: calc(--value(integer) * var(--spacing));
+}
+@utility slide-in-from-left-* {
+  --tw-enter-translate-x: calc(--value(percentage) * -1);
+  --tw-enter-translate-x: calc(--value(ratio) * -100%);
+  --tw-enter-translate-x: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-in-from-right-* {
+  --tw-enter-translate-x: --value(percentage);
+  --tw-enter-translate-x: calc(--value(ratio) * 100%);
+  --tw-enter-translate-x: calc(--value(integer) * var(--spacing));
+}
+
+@utility slide-out-to-top-* {
+  --tw-exit-translate-y: calc(--value(percentage) * -1);
+  --tw-exit-translate-y: calc(--value(ratio) * -100%);
+  --tw-exit-translate-y: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-out-to-bottom-* {
+  --tw-exit-translate-y: --value(percentage);
+  --tw-exit-translate-y: calc(--value(ratio) * 100%);
+  --tw-exit-translate-y: calc(--value(integer) * var(--spacing));
+}
+@utility slide-out-to-left-* {
+  --tw-exit-translate-x: calc(--value(percentage) * -1);
+  --tw-exit-translate-x: calc(--value(ratio) * -100%);
+  --tw-exit-translate-x: calc(--value(integer) * var(--spacing) * -1);
+}
+@utility slide-out-to-right-* {
+  --tw-exit-translate-x: --value(percentage);
+  --tw-exit-translate-x: calc(--value(ratio) * 100%);
+  --tw-exit-translate-x: calc(--value(integer) * var(--spacing));
+}
+
+@custom-variant prose-headings (:where(h1,h2,h3,h4):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-h1 (:where(h1):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-h2 (:where(h2):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-h3 (:where(h3):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-h4 (:where(h4):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-p (:where(p):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-a (:where(a):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-blockquote (:where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-code (:where(code):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-ol (:where(ol):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-ul (:where(ul):not(:where([class~=not-prose],[class~=not-prose] *)));
+@custom-variant prose-li (:where(li):not(:where([class~=not-prose],[class~=not-prose] *)));
+
+@plugin '@tailwindcss/forms';
+
+html {
+  --sc-text-dark: #0f2321;
+  --sc-text: #0f2321;
+  --sc-bg: #f5fefb;
+  --sc-100: #defcf0;
+  --sc-200: #7ae5be;
+  --sc-300: #4fdaac;
+  --sc-400: #1abd94;
+  --sc-link: #2e7e6a;
+  --sc-yellow: #cedd23;
+  --sc-purple: #9f7ccf;
+
+  scrollbar-color: var(--sc-300) var(--sc-100);
+}
+
+html.dark {
+  color-scheme: dark;
+  --sc-text: #dbf0ee;
+  --sc-bg: #161d1c;
+  --sc-100: #21322c;
+  --sc-200: #23574e;
+  --sc-300: #296f60;
+  --sc-400: #4fc4a7;
+  --sc-link: #84dbc7;
+  --sc-yellow: #666b2e;
+  --sc-purple: #764cb1;
+}
+
+.changing-theme,
+.changing-theme * {
+  transition: none !important;
+}
+
+@font-face {
+  font-family: "Mona Space";
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: url("/fonts/MonaspaceNeon-Regular-v1.101.woff2") format("woff2");
+}

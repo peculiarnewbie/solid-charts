@@ -1,0 +1,13 @@
+{
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "tag-separator": "@",
+  "include-component-in-tag": true,
+  "include-v-in-tag": false,
+  "packages": {
+    "packages/solid-charts": {
+      "component": "solid-charts",
+      "release-as": "0.0.1"
+    }
+  }
+}

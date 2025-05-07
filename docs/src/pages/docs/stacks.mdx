@@ -1,0 +1,58 @@
+---
+layout: '@layouts/Docs.astro'
+title: Stacks
+description: Composable chart library for SolidJS
+image: https://solidcharts.dev/banner.jpg
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import ExampleWrapper from '@examples/ExampleWrapper'
+import RawCode from '@components/docs/code/RawCode.astro'
+import AreaExample from '@examples/docs/stacks/area'
+import AreaExampleTsx from '@examples/docs/stacks/area?raw'
+import BarExample from '@examples/docs/stacks/bar'
+import BarExampleTsx from '@examples/docs/stacks/bar?raw'
+
+# Stacks
+
+You might want to stack your series on top of each other to visualize a total value. Series components accept the `stackId` property for this. Provide the same stack id to all the series you want to have stacked together.
+
+## Area chart
+
+This chart utilizes the Area, Line and Point series to render two stacked data series.
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <AreaExample client:only />
+  <RawCode slot="tailwindTsx" code={AreaExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+Hover over the chart to see their respective values.
+
+## Bar chart
+
+Bar series behave the same and can be stacked too:
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <BarExample client:only />
+  <RawCode slot="tailwindTsx" code={BarExampleTsx} lang="tsx" />
+</ExampleWrapper>
+

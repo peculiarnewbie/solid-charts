@@ -1,0 +1,33 @@
+{
+  "name": "@solid-charts/dev",
+  "private": true,
+  "description": "solid-charts development environment",
+  "license": "MIT",
+  "author": {
+    "name": "Jasmin Noetzli",
+    "email": "code@jasi.dev",
+    "url": "https://github.com/GiyoMoon"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "clean": "rm -rf .turbo dist node_modules",
+    "dev": "vite dev",
+    "lint": "biome check",
+    "lint:fix": "biome check --fix",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "solid-charts": "workspace:*",
+    "solid-js": "^1.9.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.5",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.6",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

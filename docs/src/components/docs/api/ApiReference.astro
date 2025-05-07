@@ -1,0 +1,27 @@
+---
+import ApiItemComponent from '@components/docs/api/items/ApiItemComponent.astro'
+import ApiItemSimple from '@components/docs/api/items/ApiItemSimple.astro'
+import resolveLibrary from '@lib/typedoc/resolve/resolve'
+import type { TypeSpecification } from '@lib/typedoc/types/specifications'
+
+interface Props {
+  parts: TypeSpecification[]
+}
+
+const { parts } = Astro.props
+
+const apiReferences = resolveLibrary(parts)
+---
+
+<div class="space-y-14">
+  {
+    apiReferences.map((apiReference) => (
+      <>
+        {apiReference.kind === 'component' && (
+          <ApiItemComponent {...apiReference} />
+        )}
+        {apiReference.kind === 'simple' && <ApiItemSimple {...apiReference} />}
+      </>
+    ))
+  }
+</div>

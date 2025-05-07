@@ -1,0 +1,115 @@
+---
+layout: '@layouts/Docs.astro'
+title: <Chart>
+description: Composable chart library for SolidJS
+image: https://solidcharts.dev/banner.jpg
+apiPageName: Chart
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import RawCode from '@components/docs/code/RawCode.astro'
+import SimpleExample from '@examples/docs/chart/simple'
+import SimpleExampleTsx from '@examples/docs/chart/simple?raw'
+import ObjectDataExample from '@examples/docs/chart/object-data'
+import ObjectDataExampleTsx from '@examples/docs/chart/object-data?raw'
+import ApiReference from '@components/docs/api/ApiReference.astro'
+import ApiPages from '@lib/typedoc/apiPages'
+
+# Chart
+
+The `<Chart>` component is the root of every chart. It’s where you feed in your data and set up global chart options. This component shares a context with its children, letting you build your chart in a flexible and composable way.
+
+This component renders the `svg` element that contains the chart. It forwards all props to the element, so you can use any valid `svg` attributes to customize your chart.
+
+## Data structure
+
+The data structure can either be a simple array of numbers or an array of objects for charts that require additional data like axis labels or multiple series.
+
+### Simple data
+
+A very basic chart can be created with an array of numbers:
+
+<Code code={SimpleExampleTsx} lang="tsx" />
+
+This will render this simple line chart:
+
+<div class="mb-4 bg-sc-bg p-5 rounded-md border-2 border-sc-200 flex justify-center">
+  <SimpleExample client:load />
+</div>
+
+### Object data
+
+For charts that require more than a single series of data, you'll have to provide an array of objects. Make sure that every object contains all the properties that you access in your chart.
+
+Let's create a chart with two series and an x-axis label:
+
+<Code code={ObjectDataExampleTsx} lang="tsx" />
+
+This will render a chart with two series and an x-axis label:
+
+<div class="mb-4 bg-sc-bg p-5 rounded-md border-2 border-sc-200 flex justify-center">
+  <ObjectDataExample client:load />
+</div>
+
+## Sizing
+
+By default, the `viewBox` of the chart matches the rendered size of the chart. If you want to adjust this, you can do so by setting the `width` and `height` props. This is useful if you want the chart to scale with the parent but keep its internal size ratios.
+
+The svg will always take up the entire size of its parent container, if you want to change the rendered size, you'll have to adjust the container element.
+
+### Examples
+
+**Fixed viewBox**
+
+This chart will take up the full width and height of its parent container and will scale to remain a fixed viewBox of 400x200.
+<Code code={`
+  <div>
+    <Chart width={400} height={200}>
+      ...
+    </Chart>
+  </div>
+`} lang="tsx" />
+
+**Aspect ratio**
+
+This chart will render with the size of the parent container, adopting its aspect ratio of 4:3.
+<Code code={`
+  <div
+    style={{
+      height: "400px",
+      "aspect-ratio": "4 / 3"
+    }}
+  >
+    <Chart>
+      ...
+    </Chart>
+  </div>
+`} lang="tsx" />
+
+## Inset
+
+By default, the chart will render with an inset padding of 8px. This is to accommodate for line series with curve interpolation that might overflow the chart area. You can modify this inset or remove it with the `inset` property:
+
+<Code code={`
+  <Chart
+    inset={{
+      top: 16,
+      right: 0,
+      bottom: 0,
+      left: 0
+    }}
+  >
+`} lang="tsx" />
+
+This sets the top inset to 16px and removes the other insets. To remove all insets, you can provide a single value:
+
+<Code code={`
+  <Chart inset={0}>
+`} lang="tsx" />
+
+## API Reference
+
+<ApiReference parts={ApiPages[frontmatter.apiPageName]} />

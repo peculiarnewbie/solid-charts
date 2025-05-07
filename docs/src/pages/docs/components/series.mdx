@@ -1,0 +1,112 @@
+---
+layout: '@layouts/Docs.astro'
+title: Series
+description: Composable chart library for SolidJS
+image: https://solidcharts.dev/banner.jpg
+apiPageName: Series
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import ExampleWrapper from '@examples/ExampleWrapper'
+import RawCode from '@components/docs/code/RawCode.astro'
+import LineExample from '@examples/docs/series/line'
+import LineExampleTsx from '@examples/docs/series/line?raw'
+import AreaExample from '@examples/docs/series/area'
+import AreaExampleTsx from '@examples/docs/series/area?raw'
+import PointExample from '@examples/docs/series/point'
+import PointExampleTsx from '@examples/docs/series/point?raw'
+import BarExample from '@examples/docs/series/bar'
+import BarExampleTsx from '@examples/docs/series/bar?raw'
+import ActivePointExample from '@examples/docs/series/active-point'
+import ActivePointExampleTsx from '@examples/docs/series/active-point?raw'
+import ApiReference from '@components/docs/api/ApiReference.astro'
+import ApiPages from '@lib/typedoc/apiPages'
+
+# Series
+
+## &lt;Line&gt;
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <LineExample client:only />
+  <RawCode slot="tailwindTsx" code={LineExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+## &lt;Area&gt;
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <AreaExample client:only />
+  <RawCode slot="tailwindTsx" code={AreaExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+## &lt;Point&gt;
+
+The point series is used to render `<circle>` elements representing the values in the chart. Is often used in combination with the `Line` or `Area` series to highlight the data points on the chart.
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <PointExample client:only />
+  <RawCode slot="tailwindTsx" code={PointExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+### activeProps
+
+The point series accepts the `activeProps` object to customize the appearance of the currently active `<circle>` element. This allows you to do things like animating the radius of an active point:
+
+
+<Code code={ActivePointExampleTsx} lang="tsx" />
+
+Hover over the chart:
+
+<div class="mb-4 bg-sc-bg p-5 rounded-md border-2 border-sc-200 flex justify-center">
+  <ActivePointExample client:load />
+</div>
+
+
+## &lt;Bar&gt;
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <BarExample client:only />
+  <RawCode slot="tailwindTsx" code={BarExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+### barConfig
+
+For the bar series there is a global `barConfig` object on the `<Chart>` component that lets you modify the way multiple bar series are rendere together. It's used to define values like the space between bars or their width.  Have a look at the `BarConfig` type in the <Link href="/docs/components/chart/#api-barconfig">Chart API reference</Link>.
+
+## API Reference
+
+<ApiReference parts={ApiPages[frontmatter.apiPageName]} />

@@ -1,0 +1,22 @@
+html {
+  --shiki-background: var(--sc-100);
+  --shiki-foreground: hsl(249, 87%, 6%);
+  --shiki-token-comment: hsl(171, 21%, 35%);
+  --shiki-token-constant: hsl(278, 80%, 47%);
+  --shiki-token-string-expression: hsl(138, 70%, 25%);
+
+  --shiki-token-keyword: hsl(206, 75%, 35%);
+  --shiki-token-punctuation: hsl(206, 75%, 35%);
+  --shiki-token-function: hsl(0, 70%, 46%);
+}
+
+html.dark {
+  --shiki-foreground: hsl(253, 26%, 83%);
+  --shiki-token-comment: hsl(156, 6%, 83%);
+  --shiki-token-constant: hsl(278, 100%, 87%);
+  --shiki-token-string-expression: hsl(138, 61%, 75%);
+
+  --shiki-token-keyword: hsl(206, 65%, 75%);
+  --shiki-token-punctuation: hsl(206, 65%, 75%);
+  --shiki-token-function: hsl(0, 100%, 86%);
+}

@@ -1,0 +1,67 @@
+---
+import type { PropType } from '@lib/typedoc/types/apiReferences'
+
+interface Props {
+  title?: string
+  props: PropType[]
+}
+
+const { title, props } = Astro.props
+---
+
+<div class="mb-4">
+  <h3 class="not-prose text-lg font-bold">{title ?? 'Props'}</h3>
+  <div class="overflow-y-auto">
+    <table class="mt-3 w-full min-w-150 text-left md:min-w-0">
+      <tr class="not-prose border-b border-sc-100">
+        <th class="w-1/4 pb-3">Property</th>
+        <th class="w-1/4 pb-3">Default</th>
+        <th class="w-1/2 pb-3">Type/Description</th>
+      </tr>
+      {
+        props.map((prop) => (
+          <tr tabindex="0" class="border-b border-sc-100">
+            <td class="not-prose py-5 pr-5 align-top text-sm">
+              <p
+                class:list={[
+                  'inline whitespace-nowrap rounded-sm px-1.5 pb-0.5 pt-1.5 font-mono',
+                  {
+                    'bg-sc-300': !prop.isFunction,
+                    'bg-sc-purple': prop.isFunction,
+                  },
+                ]}
+              >
+                {prop.name}
+              </p>
+            </td>
+            <td class="py-5 pr-5 align-top">
+              {prop.defaultHtml === null ? (
+                <p>-</p>
+              ) : (
+                <div
+                  class="prose-code:whitespace-normal!"
+                  set:html={prop.defaultHtml}
+                />
+              )}
+            </td>
+            <td class="py-5 pr-5 align-top text-sm">
+              <p class="not-prose inline rounded-sm border border-sc-200 bg-sc-100 px-1.5 pb-0.5 pt-1 font-mono text-sm">
+                {prop.type}
+              </p>
+              <div class="mt-3 not-prose" set:html={prop.descriptionHtml} />
+            </td>
+          </tr>
+        ))
+      }
+      {
+        props.length === 0 && (
+          <tr class="not-prose border-b border-sc-100">
+            <td class="py-3 align-top text-sm" colspan="3">
+              <p class="italic">No additional props.</p>
+            </td>
+          </tr>
+        )
+      }
+    </table>
+  </div>
+</div>

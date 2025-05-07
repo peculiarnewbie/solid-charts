@@ -1,0 +1,17 @@
+{
+  "index_name": "solidcharts",
+  "start_urls": [
+    "https://solidcharts.dev/docs/",
+    "https://solidcharts.dev/examples/"
+  ],
+  "sitemap_urls": ["https://solidcharts.dev/sitemap-index.xml"],
+  "selectors": {
+    "lvl0": "article h1",
+    "lvl1": "article h2",
+    "lvl2": "article h3",
+    "lvl3": "article h4",
+    "text": "article p, article li"
+  },
+  "selectors_exclude": ["[data-typesense-ignore]"],
+  "nb_hits": 0
+}

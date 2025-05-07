@@ -1,0 +1,85 @@
+---
+import '@fontsource-variable/rubik/wght.css'
+import Background from '@components/Background'
+import '@assets/global.css'
+import Head from '@components/Head.astro'
+import IndexChart from '@components/index/IndexChart'
+import PlatformScript from '@components/scripts/PlatformScript.astro'
+import ThemeScript from '@components/scripts/ThemeScript.astro'
+import Topbar from '@components/topbar/Topbar.astro'
+import rubikWoff2 from '@fontsource-variable/rubik/files/rubik-latin-wght-normal.woff2?url'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <Head
+      title="SolidJS Charts"
+      description="Component based svg charts for SolidJS. Unstyled, tweakable and composable"
+      image="https://solidcharts.dev/banner.jpg"
+    />
+    <link rel="canonical" href={Astro.url} />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={rubikWoff2}
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/MonaspaceNeon-Regular-v1.101.woff2"
+      crossorigin="anonymous"
+    />
+    <ThemeScript />
+    <PlatformScript />
+    <script
+      defer
+      data-domain="solidcharts.dev"
+      data-api="/plausible/api/event/"
+      src="/plausible/js/script.js"
+      is:inline></script>
+    <script
+      defer
+      data-domain="solidcharts.dev"
+      data-api="/lythia/a/event/"
+      src="/lythia/a.js"
+      is:inline></script>
+    <script
+      defer
+      data-domain="solidcharts.dev"
+      data-api="/lythia/m/event/"
+      src="/lythia/m.js"
+      is:inline></script>
+  </head>
+  <body class="flex flex-col bg-sc-bg text-sc-text antialiased">
+    <Background type="home" client:media="(min-width: 768px)" />
+    <Topbar />
+    <main class="mx-auto w-full max-w-7xl px-4">
+      <div class="flex grow flex-col items-center pt-40">
+        <div class="flex flex-col items-center">
+          <h1 class="mt-5 text-center text-2xl font-medium md:text-3xl">
+            <span class="text-3xl font-black md:text-4xl">solid-charts</span>
+            - composable charts for SolidJS
+          </h1>
+          <p class="mt-6 max-w-2xl text-center text-lg font-normal">
+            Component based svg charts for SolidJS. Composable, unstyled, and
+            tweakable.
+          </p>
+          <a
+            href="/docs/"
+            class="mt-6 rounded-lg bg-sc-300 px-4 py-3 text-lg font-medium transition-all duration-100 active:translate-y-0.5"
+            >Get started</a
+          >
+          <IndexChart client:only="solid-js" />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

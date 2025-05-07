@@ -1,0 +1,61 @@
+---
+layout: '@layouts/Docs.astro'
+title: Axis
+description: Composable chart library for SolidJS
+image: https://solidcharts.dev/banner.jpg
+---
+import Link from '@components/docs/Link.astro'
+import H2 from '@components/docs/headings/H2.astro'
+import H3 from '@components/docs/headings/H3.astro'
+export const components = { h2: H2, h3: H3 }
+import Code from '@components/docs/code/Code.astro'
+import ExampleWrapper from '@examples/ExampleWrapper'
+import RawCode from '@components/docs/code/RawCode.astro'
+import SingleAxisExample from '@examples/docs/axis/single'
+import SingleAxisExampleTsx from '@examples/docs/axis/single?raw'
+import MultipleAxisExample from '@examples/docs/axis/multiple'
+import MultipleAxisExampleTsx from '@examples/docs/axis/multiple?raw'
+
+# Axis
+
+Every series on the chart registers themselves to an axis. Axes are used to group series together on a scale. By default, all series use the same axis and place themselves on the chart aligned to a single scale.
+
+Series components accept the `axisId` prop that is used to register themselves to an axis. The default `axisId` for every series is `'0'`.
+
+## Single axis
+
+Here is a chart with three series that all use the same axis scale:
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <SingleAxisExample client:only />
+  <RawCode slot="tailwindTsx" code={SingleAxisExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+While this makes sense for some charts, you might want to split the series up into multiple series to ensure better readability.
+
+## Multiple axes
+
+The example above had one series with much higher values than the others. This can lead to a chart that is hard to read. Lets solve this by creating a seperate axis scale for the series with the high numbers:
+
+<ExampleWrapper codeSnippets={[{
+  name: 'Tailwind',
+  files: [
+    {
+      fileName: 'index.tsx',
+      slotName: 'tailwindTsx',
+    }
+  ]
+}]} height={302} client:idle>
+  <MultipleAxisExample client:only />
+  <RawCode slot="tailwindTsx" code={MultipleAxisExampleTsx} lang="tsx" />
+</ExampleWrapper>
+
+The axis labels on the right now correspond with the high value series, which improves the scaling of the other axis and makes reading the chart easier.
