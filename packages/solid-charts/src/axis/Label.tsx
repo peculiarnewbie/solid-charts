@@ -169,18 +169,24 @@ const Label = (props: LabelProps) => {
     }
   }
 
+  const ticks = () => axisContext.labelTicks().map(tick => ({x: x(tick), y: y(tick) , label: localProps.format(tick)}))
+
   return (
     <g ref={setLabelGroupRef} data-sc-axis-label-group="">
-      <For each={axisContext.labelTicks()}>
+      <For each={ticks()}>
         {(tick) => localProps.children ? 
-          localProps.children({
-          get data() {
-            return {x: x(tick), y: y(tick), label: tick}
-          },
-        })
+          localProps.children(
+          {
+            data:{
+              x: tick.x, 
+              y: tick.y, 
+              label: tick.label
+            }
+          }
+        )
           : (
-            <text x={x(tick)} y={y(tick)} data-sc-axis-label="" {...otherProps}>
-              {localProps.format(tick)}
+            <text x={tick.x} y={tick.y} data-sc-axis-label="" {...otherProps}>
+              {tick.label}
             </text>
           )}
       </For>
