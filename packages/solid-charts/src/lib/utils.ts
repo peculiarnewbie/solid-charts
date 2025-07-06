@@ -2,10 +2,12 @@ import type { ChartContextType } from '@src/components/context'
 import { scaleBand } from 'd3-scale'
 
 const accessData = <T>(data: unknown, dataKey: string | undefined): T[] => {
-  return (
-    dataKey
-      ? (data as Record<string, unknown>[]).map((entry) => entry[dataKey])
-      : data
+  if (!dataKey) return data as T[]
+
+  const keys = dataKey.split('.')
+
+  return (data as Record<string, any>[]).map((entry) =>
+    keys.reduce((acc, key) => acc?.[key], entry),
   ) as T[]
 }
 
