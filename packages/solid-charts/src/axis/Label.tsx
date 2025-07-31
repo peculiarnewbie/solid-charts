@@ -7,6 +7,7 @@ import type { OverrideProps } from '@src/lib/types'
 import {
   type ComponentProps,
   For,
+  type JSX,
   createEffect,
   createSignal,
   createUniqueId,
@@ -31,7 +32,11 @@ export type LabelProps = OverrideProps<
      * The minimum gap between labels.
      * @defaultValue 16px
      */
-    labelGap?: number
+    labelGap?: number,
+    /**
+     * Accepts a function as it's children that receives the data of the ticks.
+     */
+    children?: (props: {  data: any }) => JSX.Element
   }
 >
 
@@ -77,6 +82,7 @@ const Label = (props: LabelProps) => {
     'format',
     'interval',
     'labelGap',
+    "children"
   ])
 
   const [labelGroupRef, setLabelGroupRef] = createSignal<SVGGElement | null>(
@@ -163,14 +169,26 @@ const Label = (props: LabelProps) => {
     }
   }
 
+  const ticks = () => axisContext.labelTicks().map(tick => ({x: x(tick), y: y(tick) , label: localProps.format(tick)}))
+
   return (
     <g ref={setLabelGroupRef} data-sc-axis-label-group="">
-      <For each={axisContext.labelTicks()}>
-        {(tick) => (
-          <text x={x(tick)} y={y(tick)} data-sc-axis-label="" {...otherProps}>
-            {localProps.format(tick)}
-          </text>
-        )}
+      <For each={ticks()}>
+        {(tick) => localProps.children ? 
+          localProps.children(
+          {
+            data:{
+              x: tick.x, 
+              y: tick.y, 
+              label: tick.label
+            }
+          }
+        )
+          : (
+            <text x={tick.x} y={tick.y} data-sc-axis-label="" {...otherProps}>
+              {tick.label}
+            </text>
+          )}
       </For>
     </g>
   )
